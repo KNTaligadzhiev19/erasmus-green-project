@@ -1,0 +1,25 @@
+{
+  "name": "fire-department-2021",
+  "version": "1.0.0",
+  "description": "Repo for project about fire department.",
+  "main": "index.js",
+  "dependencies": {
+    "braintree-jsdoc-template": "^3.3.0",
+    "bulma-calendar": "^6.1.0",
+    "node-localstorage": "^2.1.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "generate-docs": "node_modules/.bin/jsdoc --configure configJSDoc.json --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SSIvanov19/fire-department-2021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SSIvanov19/fire-department-2021/issues"
+  },
+  "homepage": "https://github.com/SSIvanov19/fire-department-2021#readme"
+}
