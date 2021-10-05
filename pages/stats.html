@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Статистики | Fire-Department-2021</title>
+  <title>Stats</title>
   <link rel="icon" href="../img/Tab-Icon.png">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" />
@@ -24,12 +24,7 @@
       <nav class="navbar">
         <div class="navbar-brand">
           <a class="navbar-item" href="../index.html">
-            <img src="../img/Logo.png" width="90" />
-          </a>
-          <a class="navbar-item is-hidden-desktop" href="tel:112">
-            <span class="icon" style="color: #333;">
-              <i class="fa fa-lg fa-phone-alt"></i>
-            </span>
+            <img src="../img/Logo.png" width="70" />
           </a>
           <a class="navbar-item is-hidden-desktop" href="mailto:fireDepartment2021@codingburgas.bg">
             <span class="icon" style="color: #333;">
@@ -47,59 +42,42 @@
         <div id="navMenuBlogHero" class="navbar-menu">
           <!-- Left Nav -->
           <div class="navbar-start">
-            <a class="navbar-item is-active" href="../index.html">Начало</a>
-            <a class="navbar-item" href="signal.html">Подай сигнал</a>
+            <a class="navbar-item is-active" href="../index.html">Home</a>
+            <a class="navbar-item" href="signal.html">Signal</a>
 
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
-                Други
+                Others
               </a>
 
               <div class="navbar-dropdown">
-                <a class="navbar-item" href="info.html">
-                  Информация
+                <a class="navbar-item" href="smart-eco-city.html">
+                  Smart Eco City - Game
                 </a>
-                <a class="navbar-item" href="stats.html">
-                  Статистики
+                <a class="navbar-item" href="arduino-101.html">
+                  Arduino 101 - Game
                 </a>
-                <a class="navbar-item" href="fire-safety.html">
-                  Пожарна безопасност
-                </a>
-                <a class="navbar-item" href="contacts.html">
-                  Контакти
+                <a class="navbar-item" href="stats.htmll">
+                  Stats
                 </a>
                 <a class="navbar-item" href="news.html">
-                  Новини
+                  News
                 </a>
                 <hr class="navbar-divider">
                 <div id="userLogin">
                   <a class="navbar-item" href="account.html">
-                    Акаунт
+                    Account
                   </a>
                 </div>
 
                 <div id="userNotLogin">
                   <a class="navbar-item" href="login.html">
-                    Влизане
+                    Login
                   </a>
                   <a class="navbar-item" href="register.html">
-                    Регистриране
+                    Register
                   </a>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="field is-grouped">
-                <p class="control">
-                  <a class="button is-normal is-success" href="tel:112">
-                    <span class="icon">
-                      <i class="fa fa-phone-alt"></i>
-                    </span>
-                    <span>112</span>
-                  </a>
-                </p>
               </div>
             </div>
           </div>
@@ -117,7 +95,7 @@
             <span class="icon is-small">
               <i class="fas fa-home" aria-hidden="true"></i>
             </span>
-            <span>Начало</span>
+            <span>Home</span>
           </a>
         </li>
         <li>
@@ -125,7 +103,7 @@
             <span class="icon is-small">
               <i class="fas fa-puzzle-piece" aria-hidden="true"></i>
             </span>
-            <span>Други</span>
+            <span>Others</span>
           </a>
         </li>
         <li class="is-active">
@@ -133,7 +111,7 @@
             <span class="icon is-small">
               <i class="far fa-chart-bar"></i>
             </span>
-            <span>Статистики</span>
+            <span>Stats</span>
           </a>
         </li>
       </ul>
@@ -142,17 +120,17 @@
     <div class="tile is-ancestor">
       <div class="tile is-12 is-parent">
         <div class="tile is-child box" style="margin-left: 2% !important; margin-top: 2% !important;">
-          <p class="title is-4 has-text-centered">Сигнали</p>
+          <p class="title is-4 has-text-centered">Signals</p>
           <p class="title is-1 has-text-centered" id="numberOfSignals">0</p>
         </div>
 
         <div class="tile is-child box" style="margin-left: 2% !important; margin-top: 2% !important;">
-          <p class="title is-4 has-text-centered">Пожари</p>
+          <p class="title is-4 has-text-centered">Problem 1</p>
           <p class="title is-1 has-text-centered" id="numberOfFires">0</p>
         </div>
 
         <div class="tile is-child box" style="margin-left: 2% !important; margin-top: 2% !important;">
-          <p class="title is-4 has-text-centered">Наводнения</p>
+          <p class="title is-4 has-text-centered">Problem 2</p>
           <p class="title is-1 has-text-centered" id="numberOfFloods">0</p>
         </div>
 
@@ -162,19 +140,19 @@
     <div class="tile is-ancestor">
       <div class="tile is-12 is-parent">
         <div class="tile is-child box" style="margin-left: 2% !important; margin-top: 2% !important;">
-          <p class="title is-4 has-text-centered">Отбори</p>
+          <p class="title is-4 has-text-centered">Problem 3</p>
           <p class="title is-1 has-text-centered" id="numberOfTeams">0</p>
         </div>
 
         <div class="tile is-child box" style="margin-left: 2% !important; margin-top: 2% !important;">
-          <p class="title is-4 has-text-centered">Спасителните операции</p>
+          <p class="title is-4 has-text-centered">Problem 4</p>
           <p class="title is-1 has-text-centered" id="numberOfRescues">0</p>
         </div>
 
         <div class="tile is-child box" style="margin-left: 2% !important; margin-top: 2% !important;">
-          <p class="title is-4 has-text-centered">Свободни пожарни коли</p>
+          <p class="title is-4 has-text-centered">Redy volunteer</p>
           <p class="title is-1 has-text-centered" id="numberOfFreeCars">0</p>
-          <p class="has-text-centered">от общо</p>
+          <p class="has-text-centered">of</p>
           <p class="has-text-centered" id="numberOfCars">0</p>
         </div>
       </div>
@@ -184,7 +162,7 @@
     <div id="popup" class="ol-popup">
       <a href="#" id="popup-closer" class="ol-popup-closer"></a>
       <div id="popup-content"></div>
-  </div>
+    </div>
   </div>
 
   <footer class="hero">
@@ -193,11 +171,11 @@
         <div class="columns">
           <div class="column is-4">
             <div class="content">
-              <h6 class="footer_title title is-6">ИСКАТЕ ДА СТАНЕТЕ ДОБРОВОЛЕЦ?</h6>
-              <p>Напишете имейла си, ако искате да станете доброволец и нашият екип ще се свърже с Вас.</p>
+              <h6 class="footer_title title is-6">DO YOU WANT TO BE VOLUNTEER?</h6>
+              <p>If you want to be volunteer, please send to us you email address.</p>
               <div class="newsletter">
                 <form action="mailto:kntaligadzhiev19@codingburgas.bg" method="POST" class="newsletter-form">
-                  <input type="email" name="email" placeholder="Въведете имейла си!" />
+                  <input type="email" name="email" placeholder="Enter your email!" />
                   <button>
                     <i class="fa fa-paper-plane"></i>
                   </button>
@@ -208,9 +186,9 @@
           <div class="column is-4" style="text-align: center;">
             <div class="content">
               <div>
-                <h6 class="footer_title title is-6">СОЦИАЛНИ МЕДИИ</h6>
-                <p>Последвайте ни в социалните медии!</p>
-                <a class="button is-medium is-facebook" href="https://www.facebook.com/GlavnaDirekciaPBZN">
+                <h6 class="footer_title title is-6">SOCIALS MEDIAS</h6>
+                <p>Follow us in social medias</p>
+                <a class="button is-medium is-facebook" href="">
                   <span class="icon">
                     <i class="fab fa-facebook-f fa-lg"></i>
                   </span>
@@ -228,16 +206,13 @@
               </div>
             </div>
           </div>
-          <div class="column is-4">
+          <div class="column is-4 has-text-centered">
             <div class="content">
-              <h6 class="footer_title title is-6">ПРИЕМНА ЗА ГРАЖДАНИ</h6>
-              <p class="is-marginless">ул. „6-и септември“ 29, София 1000</p>
-              <p class="is-marginless">Приемно време: 10:00 - 12:00 ч. и 14:00 - 16:00 ч.</p>
-              <p class="is-marginless">За жалби, предложения и сигнали:</p>
-              <div>
-                <i class="fa fa-phone"></i> &nbsp; <span>телефон:</span>
-                <a href="tel:029822574">02 9822 574</a>
-              </div>
+              <h6 class="footer_title title is-6">WHY OUR WEBSITE?</h6>
+              <p>In this site you can find some useful information about ecology and other topics. You can also find
+                some
+                games and report contaminated
+                places to and will try to find volunteers to clean up the place.</p>
             </div>
           </div>
         </div>
@@ -245,7 +220,7 @@
     </div>
     <div class="hero-foot">
       <div class="container has-text-centered">
-        <p class="footer-text"> &copy; 2021 - techFlames</p>
+        <p class="footer-text"> &copy; 2021 - GreenCities</p>
       </div>
     </div>
     <br>
