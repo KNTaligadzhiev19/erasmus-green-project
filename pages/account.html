@@ -8,6 +8,7 @@
   <title>Account</title>
   <link rel="icon" href="../img/Tab-Icon.png">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/footer-style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css" />
@@ -29,108 +30,111 @@
   <!--<link rel="stylesheet" href="../styles/debug.css">-->
 </head>
 
-<div class="first_nav">
-  <div class="container">
-    <nav class="navbar">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="../index.html">
-          <img src="../img/Logo.png" width="70" />
-        </a>
-        <a class="navbar-item is-hidden-desktop" href="tel:112">
-          <span class="icon" style="color: #333;">
-            <i class="fa fa-lg fa-phone-alt"></i>
-          </span>
-        </a>
-        <a class="navbar-item is-hidden-desktop" href="mailto:fireDepartment2021@codingburgas.bg">
-          <span class="icon" style="color: #333;">
-            <i class="fa fa-lg fa-envelope"></i>
-          </span>
-        </a>
-        <!-- Mobile Menu -->
-        <div class="navbar-burger burger" data-target="navMenuBlogHero">
-          <span></span>
-          <span></span>
-          <span></span>
+<body>
+
+  <div class="first_nav">
+    <div class="container">
+      <nav class="navbar">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="../index.html">
+            <img src="../img/Logo.png" width="70" />
+          </a>
+          <a class="navbar-item is-hidden-desktop" href="tel:112">
+            <span class="icon" style="color: #333;">
+              <i class="fa fa-lg fa-phone-alt"></i>
+            </span>
+          </a>
+          <a class="navbar-item is-hidden-desktop" href="mailto:fireDepartment2021@codingburgas.bg">
+            <span class="icon" style="color: #333;">
+              <i class="fa fa-lg fa-envelope"></i>
+            </span>
+          </a>
+          <!-- Mobile Menu -->
+          <div class="navbar-burger burger" data-target="navMenuBlogHero">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
-      </div>
-      <!-- Menu -->
-      <div id="navMenuBlogHero" class="navbar-menu">
-        <!-- Left Nav -->
-        <div class="navbar-start">
-          <a class="navbar-item is-active" href="../index.html">Home</a>
-          <a class="navbar-item" href="signal.html">Signal</a>
+        <!-- Menu -->
+        <div id="navMenuBlogHero" class="navbar-menu">
+          <!-- Left Nav -->
+          <div class="navbar-start">
+            <a class="navbar-item is-active" href="../index.html">Home</a>
+            <a class="navbar-item" href="signal.html">Signal</a>
 
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              Others
-            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                Others
+              </a>
 
-            <div class="navbar-dropdown">
-              <a class="navbar-item" href="smart-eco-city.html">
-                Smart Eco City - Game
-              </a>
-              <a class="navbar-item" href="arduino-101.html">
-                Arduino 101 - Game
-              </a>
-              <a class="navbar-item" href="stats.htmll">
-                Stats
-              </a>
-              <a class="navbar-item" href="news.html">
-                News
-              </a>
-              <hr class="navbar-divider">
-              <div id="userLogin">
-                <a class="navbar-item" href="account.html">
-                  Account
+              <div class="navbar-dropdown">
+                <a class="navbar-item" href="smart-eco-city.html">
+                  Smart Eco City - Game
                 </a>
-              </div>
+                <a class="navbar-item" href="arduino-101.html">
+                  Arduino 101 - Game
+                </a>
+                <a class="navbar-item" href="stats.htmll">
+                  Stats
+                </a>
+                <a class="navbar-item" href="news.html">
+                  News
+                </a>
+                <hr class="navbar-divider">
+                <div id="userLogin">
+                  <a class="navbar-item" href="account.html">
+                    Account
+                  </a>
+                </div>
 
-              <div id="userNotLogin">
-                <a class="navbar-item" href="login.html">
-                  Login
-                </a>
-                <a class="navbar-item" href="register.html">
-                  Register
-                </a>
+                <div id="userNotLogin">
+                  <a class="navbar-item" href="login.html">
+                    Login
+                  </a>
+                  <a class="navbar-item" href="register.html">
+                    Register
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
+    <progress class="progress is-small is-primary" max="100"></progress>
   </div>
-  <progress class="progress is-small is-primary" max="100"></progress>
-</div>
 
-<section style="margin: 5%">
-  <div class="breadcrumb" aria-label="breadcrumbs">
-    <ul>
-      <li>
-        <a href="../index.html">
-          <span class="icon is-small">
-            <i class="fas fa-home" aria-hidden="true"></i>
-          </span>
-          <span>Home</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <span class="icon is-small">
-            <i class="fas fa-puzzle-piece" aria-hidden="true"></i>
-          </span>
-          <span>Others</span>
-        </a>
-      </li>
-      <li class="is-active">
-        <a href="#">
-          <span class="icon is-small">
-            <i class="fas fa-user"></i>
-          </span>
-          <span>Account</span>
-        </a>
-      </li>
-    </ul>
-  </div><br>
+  <section style="margin: 5%">
+    <div class="breadcrumb" aria-label="breadcrumbs">
+      <ul>
+        <li>
+          <a href="../index.html">
+            <span class="icon is-small">
+              <i class="fas fa-home" aria-hidden="true"></i>
+            </span>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon is-small">
+              <i class="fas fa-puzzle-piece" aria-hidden="true"></i>
+            </span>
+            <span>Others</span>
+          </a>
+        </li>
+        <li class="is-active">
+          <a href="#">
+            <span class="icon is-small">
+              <i class="fas fa-user"></i>
+            </span>
+            <span>Account</span>
+          </a>
+        </li>
+      </ul>
+    </div><br>
+  </section>
 
   <article class="panel is-info" style="width: 80%; margin-left: 10%; margin-right: 10%;">
     <p class="panel-heading">
@@ -181,65 +185,45 @@
     </div>
   </article>
 
-  <footer class="hero">
-    <div class="hero-body">
-      <div class="container">
-        <div class="columns">
-          <div class="column is-4">
-            <div class="content">
-              <h6 class="footer_title title is-6">DO YOU WANT TO BE VOLUNTEER?</h6>
-              <p>If you want to be volunteer, please send to us you email address.</p>
-              <div class="newsletter">
-                <form action="mailto:kntaligadzhiev19@codingburgas.bg" method="POST" class="newsletter-form">
-                  <input type="email" name="email" placeholder="Enter your email!" />
-                  <button>
-                    <i class="fa fa-paper-plane"></i>
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="column is-4" style="text-align: center;">
-            <div class="content">
-              <div>
-                <h6 class="footer_title title is-6">SOCIALS MEDIAS</h6>
-                <p>Follow us in social medias</p>
-                <a class="button is-medium is-facebook" href="">
-                  <span class="icon">
-                    <i class="fab fa-facebook-f fa-lg"></i>
-                  </span>
-                </a>
-                <a class="button is-medium is-foursquare">
-                  <span class="icon">
-                    <i class="fab fa-instagram fa-lg"></i>
-                  </span>
-                </a>
-                <a class="button is-medium is-twitter">
-                  <span class="icon">
-                    <i class="fab fa-twitter fa-lg"></i>
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="column is-4 has-text-centered">
-            <div class="content">
-              <h6 class="footer_title title is-6">WHY OUR WEBSITE?</h6>
-              <p>In this site you can find some useful information about ecology and other topics. You can also find
-                some
-                games and report contaminated
-                places to and will try to find volunteers to clean up the place.</p>
-            </div>
+  <footer class="footer1">
+    <div class="container1">
+      <div class="row1">
+        <div class="footer1-col">
+          <h4>ABOUT SITE</h4>
+          <p>In this site you can find some useful information about ecology and other topics. You can also find some
+            games and report contaminated
+            places to and will try to find volunteers to clean up the place.</p>
+        </div>
+
+        <div class="footer1-col">
+          <h4>SOCIAL MEDIAS</h4>
+          <div style="margin-left: 7%;">
+            <a href="#"><i class="fab fa-2x fa-facebook-f"></i></a>
+            <a href="https://github.com/KNTaligadzhiev19/erasmus-green-project" target="_blank"
+              style="margin-left: 7%;"><i class="fab fa-2x fa-github"></i></a>
+            <a href="#" style="margin-left: 7%;"><i class="fab fa-2x fa-instagram"></i></a>
+            <a href="#" style="margin-left: 7%;"><i class="fab fa-2x fa-linkedin-in"></i></a>
           </div>
         </div>
+
+        <div class="footer1-col">
+          <h4>LINKS</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Arduino 101</a></li>
+            <li><a href="#">SmartEcoCity</a></li>
+            <li><a href="#">Влизане</a></li>
+            <li><a href="#">Регистрация</a></li>
+            <li><a href="https://github.com/KNTaligadzhiev19/erasmus-green-project" target="_blank">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div><br>
+    <div>
+      <div class="has-text-centered">
+        <p> &copy; 2021 - erasmus-green-project</p>
       </div>
     </div>
-    <div class="hero-foot">
-      <div class="container has-text-centered">
-        <p class="footer-text"> &copy; 2021 - GreenCities</p>
-      </div>
-    </div>
-    <br>
   </footer>
 
   <script src="../node_modules/bulma-calendar/dist/js/bulma-calendar.min.js"></script>
@@ -248,6 +232,6 @@
   <script src="../scripts/Presentation Layer/accountPageScript.js"></script>
   <script src="../scripts/Presentation Layer/tabs-script.js"></script>
 
-  </body>
+</body>
 
 </html>
