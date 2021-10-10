@@ -79,7 +79,7 @@ function User(fname, lname, email, pass, id, role, region = "Бургас", rank
     this.region = region;
     this.rank = rank;
     this.achievements = achievements;
-    if (role = ROLES.VOLUNTEER) {
+    if (role == ROLES.VOLUNTEER) {
         this.signal = signal;
     }
 }
@@ -542,7 +542,7 @@ function AccountManager(localStorage) {
                 userArray[index].role,
                 userArray[index].region,
                 userArray[index].rank,
-                userArray[index].achievements
+                userArray[index].achievements,
             );
 
             ls.isUserEnter = true;
@@ -696,7 +696,7 @@ function AccountManager(localStorage) {
      * @returns {array} Array of signals.
      */
     function getAcceptedSignals() {
-        return JSON.parse(ls.getItem('signals')).filter(signal => signal.team != null).filter(signal => signal.start != null);
+        return JSON.parse(ls.getItem('signals')).filter(signal => signal.volunteer != null).filter(signal => signal.start != null);
     }
 
     /**
@@ -786,37 +786,36 @@ function AccountManager(localStorage) {
         return 0;
     }
 
-    /* Old feature
     /**
      * Function that assign team for a signal
      * @param {number} signalId Id of the signal
      * @param {number} teamId Id of the team
      * @returns {number} Error code.
-    function assignTeamForSignal(signalId, teamId) {
+    */
+    function assignVolunteerForSignal(signalId, volunteerId) {
         if (signalId == "") {
             return 1;
         }
 
-        if (teamId == "") {
+        if (volunteerId == "") {
             return 2;
         }
 
         let signals = getSignals();
-        let teams = getTeams();
+        load();
 
-        if (teams.findIndex(team => team.signal == signalId) != -1) {
-            teams[teams.findIndex(team => team.signal == signalId)].signal = null;
+        if (userArray.findIndex(volunteer => volunteer.signal == signalId) != -1) {
+            userArray[userArray.findIndex(volunteer => volunteer.signal == signalId)].signal = null;
         }
 
-        signals[signals.findIndex(signal => signal.id == signalId)].team = teamId;
-        teams[teams.findIndex(team => team.id == teamId)].signal = signalId;
+        signals[signals.findIndex(signal => signal.id == signalId)].volunteer = volunteerId;
+        userArray[userArray.findIndex(user => user.id == volunteerId)].signal = signalId;
 
         ls.setItem('signals', JSON.stringify(signals));
-        ls.setItem('teams', JSON.stringify(teams))
+        ls.setItem('users', JSON.stringify(userArray));
 
         return 0;
     }
-    */
 
     /**
      * Function that delete a signal.
@@ -846,17 +845,18 @@ function AccountManager(localStorage) {
         return 0;
     }
 
-    /* Old feature
+    
     /**
      * Function that return a team with id.
      * @param {number} id Id of the team
      * @returns {Team} Team object.
-    function getTeamWithId(id) {
-        let teams = getTeams();
-
-        return teams.find(team => team.id == id);
-    }
     */
+    function getVolunteerWithId(id) {
+        let volunteers = getVolunteers();
+
+        return volunteers.find(volunteer => volunteer.id == id);
+    }
+    
 
     /* Old feature
     /**
@@ -897,7 +897,7 @@ function AccountManager(localStorage) {
      * @param {number} id Id of the signal 
      */
     function endWorking(id) {
-        let teams = getTeams()
+        load();
         let signals = getSignals();
 
         signals[signals.findIndex(signal => signal.id == id)].end = new Date();
@@ -907,11 +907,11 @@ function AccountManager(localStorage) {
 
         signals[signals.findIndex(signal => signal.id == id)].timeToComplete = diff(signal.start, signal.end);
 
-        teams[teams.findIndex(team => team.signal == id)].signal = null;
-        signals[signals.findIndex(signal => signal.id == id)].team = null;
+        userArray[userArray.findIndex(user => user.signal == id)].signal = null;
+        signals[signals.findIndex(signal => signal.id == id)].volunteer = null;
 
         ls.setItem("signals", JSON.stringify(signals));
-        ls.setItem("teams", JSON.stringify(teams));
+        ls.setItem("users", JSON.stringify(userArray));
     }
 
     /**
@@ -1024,7 +1024,9 @@ function AccountManager(localStorage) {
     }
 
     return {
+        assignVolunteerForSignal,
         getAll,
+        getVolunteerWithId,
         registerUser,
         login,
         logOut,

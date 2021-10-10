@@ -1,4 +1,5 @@
 //tabs
+/*
 const tabs = document.querySelectorAll('.tabs li');
 const tabContentBoxes = document.querySelectorAll('#tab-content > div');
 
@@ -16,4 +17,4 @@ tabs.forEach((tab) => {
             }
         });
     })
-})
+})*/

@@ -37,16 +37,16 @@ window.onload = () => {
  */
 function getNumbers() {
     numberOfSingals = am.getNumberOfSignals() ?? 0;
-    numberOfTeams = am.getNumberOfTeam() ?? 0;
-    numberOfFires = am.getNumberOfFires() ?? 0;
-    numberOfFloods = am.getNumberOfFloods() ?? 0;
-    numberOfRescues = am.getNumberOfRescues() ?? 0;
-    numberOfFreeCars = am.getNumberOfFreeCars() ?? 0;
-    numberOfCars = am.getNumberOfCars() ?? 0;
+    //numberOfTeams = am.getNumberOfTeam() ?? 0;
+    //numberOfFires = am.getNumberOfFires() ?? 0;
+    //numberOfFloods = am.getNumberOfFloods() ?? 0;
+    //numberOfRescues = am.getNumberOfRescues() ?? 0;
+    //numberOfFreeCars = am.getNumberOfFreeCars() ?? 0;
+    //numberOfCars = am.getNumberOfCars() ?? 0;
 
     if (numberOfSingals != 0) {
         let signals = am.getAcceptedSignals();
-
+        console.log(signals);
         coordinatesX = [];
         coordinatesY = [];
 
