@@ -20,8 +20,9 @@ function getInput() {
   let lname = am.escapeHtml(document.getElementById("lname").value);
   let email = am.escapeHtml(document.getElementById("email").value);
   let pass = am.escapeHtml(document.getElementById("pass").value);
+  let volunteer = document.getElementById("volunteer").checked;
 
-  let output = am.registerUser(fname, lname, email, pass, 0, "Бургас");
+  let output = am.registerUser(fname, lname, email, pass, Number(volunteer), "Бургас");
 
   switch (output) {
     case 0:

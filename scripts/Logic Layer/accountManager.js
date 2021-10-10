@@ -5,7 +5,7 @@
  */
 ROLES = {
     USER: 0,
-    FIREFIGHTER: 1,
+    VOLUNTEER: 1,
     DISPATCHER: 2,
     ADMIN: 3
 }
@@ -16,15 +16,17 @@ ROLES = {
  * @type {array}
  */
 let admins = [{
-    fname: "Стоян",
-    lname: "Иванов",
-    region: "Бургас",
+    fname: "Stoyan",
+    lname: "Ivanov",
+    region: "Burgas",
     email: "admin@burgas.bg",
     pass: "!@Ad@!min#$",
-    role: ROLES.ADMIN
+    role: ROLES.ADMIN,
+    rank: "Admin",
+    achievements: []
 }]
 
-/**
+/* Old feature
  * This constructor function will create
  * a team object and return it.
  * @constructor
@@ -39,19 +41,19 @@ let admins = [{
  * @param {number} id Number, which represent the id of the team
  * @param {number} signal  Id of signal setted to the team
  * @returns {Object} The team object
- */
-function Teams(employees, car, starOfWorkingDay, endOfWorkingDay, shifts, holidays, sickLeaves, businessTrips, id, signal = null) {
-    this.employees = employees;
-    this.car = car;
-    this.starOfWorkingDay = starOfWorkingDay;
-    this.endOfWorkingDay = endOfWorkingDay;
-    this.shifts = shifts;
-    this.holidays = holidays;
+ function Teams(employees, car, starOfWorkingDay, endOfWorkingDay, shifts, holidays, sickLeaves, businessTrips, id, signal = null) {
+     this.employees = employees;
+     this.car = car;
+     this.starOfWorkingDay = starOfWorkingDay;
+     this.endOfWorkingDay = endOfWorkingDay;
+     this.shifts = shifts;
+     this.holidays = holidays;
     this.sickLeaves = sickLeaves;
     this.businessTrips = businessTrips;
     this.id = id;
     this.signal = signal;
 }
+*/
 
 /**
  * This constructor function will create
@@ -67,7 +69,7 @@ function Teams(employees, car, starOfWorkingDay, endOfWorkingDay, shifts, holida
  * @param {number} team Team of the user
  * @returns {Object} The user object
  */
-function User(fname, lname, email, pass, id, role, region = "Бургас", team = null) {
+function User(fname, lname, email, pass, id, role, region = "Бургас", rank, achievements, signal = null) {
     this.fname = fname;
     this.lname = lname;
     this.email = email;
@@ -75,11 +77,14 @@ function User(fname, lname, email, pass, id, role, region = "Бургас", team
     this.id = id;
     this.role = role;
     this.region = region;
-    if (role = ROLES.FIREFIGHTER) {
-        this.team = team
+    this.rank = rank;
+    this.achievements = achievements;
+    if (role = ROLES.VOLUNTEER) {
+        this.signal = signal;
     }
 }
 
+/* Old feature
 /**
  * This constructor function will create
  * a car object and return it.
@@ -91,15 +96,15 @@ function User(fname, lname, email, pass, id, role, region = "Бургас", team
  * @param {number} id Id of the car
  * @param {boolean} inTeam Boolean type of varible that represent if car is in use by a team
  * @returns {Object} The car object
- */
-function Car(model, registrationPlate, numberOfSeats, region, id, inTeam = false) {
-    this.model = model;
-    this.registrationPlate = registrationPlate;
-    this.numberOfSeats = numberOfSeats;
-    this.region = region;
-    this.id = id;
-    this.inTeam = inTeam;
-}
+ function Car(model, registrationPlate, numberOfSeats, region, id, inTeam = false) {
+     this.model = model;
+     this.registrationPlate = registrationPlate;
+     this.numberOfSeats = numberOfSeats;
+     this.region = region;
+     this.id = id;
+     this.inTeam = inTeam;
+    }
+*/
 
 /**
  * This constructor function will create
@@ -119,7 +124,7 @@ function Car(model, registrationPlate, numberOfSeats, region, id, inTeam = false
  * @param {string} timeToComplete Time taken to complete the signal
  * @returns {Object} The signal object
  */
-function Signal(title, names, type, coordinatesX, coordinatesY, description, id, team = null, isClosed = false, start = null, end = null, timeToComplete = null) {
+function Signal(title, names, type, coordinatesX, coordinatesY, description, id, volunteer = null, isClosed = false, start = null, end = null, timeToComplete = null) {
     this.title = title;
     this.names = names;
     this.type = type;
@@ -127,7 +132,7 @@ function Signal(title, names, type, coordinatesX, coordinatesY, description, id,
     this.coordinatesY = coordinatesY;
     this.description = description;
     this.id = id;
-    this.team = team;
+    this.volunteer = volunteer;
     this.isClosed = isClosed;
     this.start = start;
     this.end = end;
@@ -135,7 +140,7 @@ function Signal(title, names, type, coordinatesX, coordinatesY, description, id,
 }
 
 /**
- * This constructor function about account managment
+ * This constructor function about account management
  * @constructor
  * @param {localStorage} localStorage  
  * @returns {Object} 
@@ -153,17 +158,20 @@ function AccountManager(localStorage) {
      */
     let ls = localStorage;
 
+    /* Old feature
     /**
      * Array that hold the teams.
      * @type {array}
+     let teamArray = [];
      */
-    let teamArray = [];
 
+    /* Old feature
     /**
      * Array that hold the cars.
      * @type {array}
+     let carArray = [];
      */
-    let carArray = [];
+     
 
     /**
      * Array that hold the signals.
@@ -205,15 +213,16 @@ function AccountManager(localStorage) {
         return userArray.find(user => user.email.toLowerCase() == email.toLowerCase());
     }
 
+    /* Old feature
     /**
      * Function to find a car by registration plate.
      * @param {string} registrationPlate Registration plate of the car
      * @returns {Object} The car.
-     */
-    function findCarByRP(registrationPlate) {
-        carArray = getCars();
-        return carArray.find(car => car.registrationPlate == registrationPlate);
-    }
+     function findCarByRP(registrationPlate) {
+         carArray = getCars();
+         return carArray.find(car => car.registrationPlate == registrationPlate);
+        }
+        */
 
     /**
      * Function to validate the input.
@@ -290,7 +299,8 @@ function AccountManager(localStorage) {
                 admins[index].id,
                 admins[index].role,
                 admins[index].region,
-                admins[index].team
+                admins[index].rank,
+                admins[index].achievements
             );
 
             ls.isUserEnter = true;
@@ -303,6 +313,7 @@ function AccountManager(localStorage) {
         }
     }
 
+    /* Old feature
     /**
      * Function for registering a car.
      * @param {string} model The model of the car
@@ -310,7 +321,7 @@ function AccountManager(localStorage) {
      * @param {number} numberOfSeats Number of seats in the car
      * @param {string} region The region of the car
      * @returns {number} Error code.
-     */
+     
     function registerCar(model, registrationPlate, numberOfSeats, region) {
         if (numberOfSeats <= 0) {
             return 1;
@@ -352,7 +363,9 @@ function AccountManager(localStorage) {
 
         return 0;
     }
-
+    */
+    
+    /* Old feature
     /**
      * Function for registering a team.
      * @param {array} employees Array of employees ids
@@ -364,7 +377,7 @@ function AccountManager(localStorage) {
      * @param {string} sickLeaves String with start and end of sick leaves 
      * @param {string} businessTrips String with start and end of business trips
      * @returns {number} Error code.
-     */
+     
     function registerTeam(employees, car, starOfWorkingDay, endOfWorkingDay, shifts, holidays, sickLeaves, businessTrips) {
         if (teamArray != null) {
             teamArray = getTeams();
@@ -442,6 +455,7 @@ function AccountManager(localStorage) {
 
         return 0;
     }
+    */
 
     /**
      * Function for registering a user.
@@ -486,7 +500,7 @@ function AccountManager(localStorage) {
             ls.numberOfUsers++;
         }
 
-        let user = new User(fname, lname, email, pass, ls.numberOfUsers, role, region);
+        let user = new User(fname, lname, email, pass, ls.numberOfUsers, role, region, "Citizen", []);
 
         if (userArray == null) {
             userArray = []
@@ -527,7 +541,8 @@ function AccountManager(localStorage) {
                 userArray[index].id,
                 userArray[index].role,
                 userArray[index].region,
-                userArray[index].team
+                userArray[index].rank,
+                userArray[index].achievements
             );
 
             ls.isUserEnter = true;
@@ -591,13 +606,15 @@ function AccountManager(localStorage) {
         return ls.isUserEnter;
     }
 
+
+    /* Old feature
     /**
      * Function that get all cars.
      * @returns {array} Array of car objects.
-     */
-    function getCars() {
-        return JSON.parse(ls.getItem('cars'));
-    }
+     function getCars() {
+         return JSON.parse(ls.getItem('cars'));
+        }
+    */
 
     /**
      * Function that get all signals.
@@ -611,97 +628,28 @@ function AccountManager(localStorage) {
      * Function that get all teams.
      * @returns {array} Array of team objects.
      */
-    function getTeams() {
-        return JSON.parse(ls.getItem('teams'));
+    function getVolunteers() {
+        return JSON.parse(ls.getItem('users')).filter(user => user.role == 1);
     }
 
     /**
      * Function that get all signal that can accept the signal.
      * @returns {array} Array of signal objects.
      */
-    function getTeamsForSignals() {
-        let teams = getTeams();
-        let today = new Date();
+    function getVolunteersForSignals() {
+        let volunteers = getVolunteers();
         let returnArr = [];
 
-        if (teams == null) {
+        if (volunteers == null) {
             return null;
         }
 
-        for (const team of teams) {
-            if (team.signal != null) {
+        for (const volunteer of volunteers) {
+            if (volunteer.signal != null) {
                 continue;
             }
 
-            if (team.shifts.find(day => day == today.getDay()) == undefined) {
-                continue;
-            }
-
-            if (parseInt(team.starOfWorkingDay) < parseInt(team.endOfWorkingDay)) {
-                if (!(parseInt(team.starOfWorkingDay) < today.getHours() && today.getHours() < parseInt(team.endOfWorkingDay))) {
-                    if (parseInt(team.starOfWorkingDay) == today.getHours()) {
-                        if (parseInt(team.starOfWorkingDay.split(":")[1]) > today.getMinutes()) {
-                            continue;
-                        }
-                    } else if (parseInt(team.endOfWorkingDay) == today.getHours()) {
-                        if (parseInt(team.endOfWorkingDay.split(":")[1]) < today.getMinutes()) {
-                            continue;
-                        }
-                    } else {
-                        continue;
-                    }
-                }
-            } else if (parseInt(team.starOfWorkingDay) > parseInt(team.endOfWorkingDay)) {
-                if (!(parseInt(team.starOfWorkingDay) < today.getHours() || today.getHours() < parseInt(team.endOfWorkingDay))) {
-                    if (parseInt(team.starOfWorkingDay) == today.getHours()) {
-                        if (parseInt(team.starOfWorkingDay.split(":")[1]) > today.getMinutes()) {
-                            continue;
-                        }
-                    } else if (parseInt(team.endOfWorkingDay) == today.getHours()) {
-                        if (parseInt(team.endOfWorkingDay.split(":")[1]) < today.getMinutes()) {
-                            continue;
-                        }
-                    } else {
-                        continue;
-                    }
-                }
-            } else if (parseInt(team.starOfWorkingDay) == parseInt(team.endOfWorkingDay)) {
-                if (parseInt(team.starOfWorkingDay.split(":")[1]) < parseInt(team.endOfWorkingDay.split(":")[1])) {
-                    if (!(parseInt(team.starOfWorkingDay.split(":")[1]) < today.getHours() && today.getHours() < parseInt(team.endOfWorkingDay.split(":")[1]))) {
-                        continue;
-                    }
-                } else if (parseInt(team.starOfWorkingDay.split(":")[1]) > parseInt(team.endOfWorkingDay.split(":")[1])) {
-                    if (!(parseInt(team.starOfWorkingDay.split(":")[1]) < today.getHours() || today.getHours() < parseInt(team.endOfWorkingDay.split(":")[1]))) {
-                        continue;
-                    }
-                }
-            } else {
-                console.log("A wild error appeared");
-            }
-
-
-            let startOfHoliday = parseDate(team.holidays.slice(0, 10));
-            let endOfHoliday = parseDate(team.holidays.slice(13, 23));
-
-            let startOfSickLeaves = parseDate(team.sickLeaves.slice(0, 10));
-            let endOfSickLeaves = parseDate(team.sickLeaves.slice(13, 23));
-
-            let startOfBusinessTrips = parseDate(team.businessTrips.slice(0, 10));
-            let endOfBusinessTrips = parseDate(team.businessTrips.slice(13, 23));
-
-            if (startOfHoliday.getTime() <= today.getTime() && endOfHoliday.getTime() >= today.getTime()) {
-                continue;
-            }
-
-            if (startOfSickLeaves.getTime() <= today.getTime() && endOfSickLeaves.getTime() >= today.getTime()) {
-                continue;
-            }
-
-            if (startOfBusinessTrips.getTime() <= today.getTime() && endOfBusinessTrips.getTime() >= today.getTime()) {
-                continue;
-            }
-
-            returnArr.push(team);
+            returnArr.push(volunteer);
         }
 
         return returnArr;
@@ -729,18 +677,19 @@ function AccountManager(localStorage) {
     /**
      * Function that get signals that have teams.
      * @returns {array} Array of signals.
-     */
-    function getSignalsWithTeamSelected() {
-        return JSON.parse(ls.getItem('signals')).filter(signal => signal.team != null).filter(signal => signal.start == null);
+    */
+    function getSignalsWithVolunteerSelected() {
+        return JSON.parse(ls.getItem('signals')).filter(signal => signal.volunteer != null).filter(signal => signal.start == null);
     }
 
     /**
      * Function that get signals that don't have teams.
      * @returns {array} Array of signals.
-     */
-    function getSignalsWithoutTeamSelected() {
-        return JSON.parse(ls.getItem('signals')).filter(signal => signal.team == null).filter(signal => signal.isClosed != true);
+    */
+    function getSignalsWithoutVolunteerSelected() {
+        return JSON.parse(ls.getItem('signals')).filter(signal => signal.volunteer == null).filter(signal => signal.isClosed != true);
     }
+
 
     /**
      * Function that get signals that are accepted.
@@ -837,12 +786,12 @@ function AccountManager(localStorage) {
         return 0;
     }
 
+    /* Old feature
     /**
      * Function that assign team for a signal
      * @param {number} signalId Id of the signal
      * @param {number} teamId Id of the team
      * @returns {number} Error code.
-     */
     function assignTeamForSignal(signalId, teamId) {
         if (signalId == "") {
             return 1;
@@ -867,6 +816,7 @@ function AccountManager(localStorage) {
 
         return 0;
     }
+    */
 
     /**
      * Function that delete a signal.
@@ -896,27 +846,29 @@ function AccountManager(localStorage) {
         return 0;
     }
 
+    /* Old feature
     /**
      * Function that return a team with id.
      * @param {number} id Id of the team
      * @returns {Team} Team object.
-     */
     function getTeamWithId(id) {
         let teams = getTeams();
 
         return teams.find(team => team.id == id);
     }
+    */
 
+    /* Old feature
     /**
      * Function that return a car with id. 
      * @param {number} id Id of the car
      * @returns {Car} Car object.
-     */
-    function getCarWithId(id) {
-        let cars = getCars();
-
-        return cars.find(car => car.id == id);
-    }
+     function getCarWithId(id) {
+         let cars = getCars();
+         
+         return cars.find(car => car.id == id);
+        }
+        */
 
     /**
      * Function that return a user with id. 
@@ -1034,18 +986,19 @@ function AccountManager(localStorage) {
         }
     }
 
+    /* Old feature
     /**
      * Return the number of cars.
      * @returns {number} Number of cars
-     */
     function getNumberOfCars() {
         return ls.numberOfCars;
     }
+    */
 
+    /* Old feature
     /**
      * Return the number of free cars.
      * @returns {number} Number of free cars
-     */
     function getNumberOfFreeCars() {
         if (getCars() == null) {
             return 0;
@@ -1053,6 +1006,7 @@ function AccountManager(localStorage) {
             return getCars().filter(car => car.inTeam == false).length;
         }
     }
+    */
 
     /**
      * Function that prevent Cross Site Scripting
@@ -1077,21 +1031,10 @@ function AccountManager(localStorage) {
         deleteAccount,
         deleteAllAccount,
         checkForEnterUser,
-        registerTeam,
-        registerCar,
-        getCars,
         getFirefighters,
         submitSignalForm,
         getSignals,
-        getTeams,
-        assignTeamForSignal,
-        getSignalsWithId,
-        getTeamsForSignals,
-        getSignalsWithTeamSelected,
-        getSignalsWithoutTeamSelected,
         deleteSignal,
-        getTeamWithId,
-        getCarWithId,
         getUserWithId,
         startWorking,
         endWorking,
@@ -1101,10 +1044,11 @@ function AccountManager(localStorage) {
         getNumberOfFires,
         getNumberOfFloods,
         getNumberOfFloods,
-        getNumberOfTeam,
-        getNumberOfCars,
-        getNumberOfFreeCars,
         getNumberOfRescues,
+        getSignalsWithId,
+        getSignalsWithoutVolunteerSelected,
+        getSignalsWithVolunteerSelected,
+        getVolunteersForSignals,
         getActiveUser,
         isArrayEmpty,
         escapeHtml

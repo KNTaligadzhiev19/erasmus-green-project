@@ -5,7 +5,7 @@ let sigSel = document.getElementById("signals");
 let sigPendingSel = document.getElementById("signalsPending");
 let sigAccSel = document.getElementById("signalsAccepted");
 let sigClosedSel = document.getElementById("signalsClosed");
-let teamSel = document.getElementById("teams");
+let teamSel = document.getElementById("volunteers");
 let teamPenSel = document.getElementById("teamsPendingSignal");
 let teamSigSel = document.getElementById("signalTeam");
 
@@ -14,35 +14,35 @@ window.onload = () => {
 
     if (isEnter) {
         let role = activeUser.role;
-        document.getElementById("fname").innerHTML = "Име: " + activeUser.fname;
-        document.getElementById("lname").innerHTML = "Фамилия: " + activeUser.lname;
+        document.getElementById("fname").innerHTML = "First Name: " + activeUser.fname;
+        document.getElementById("lname").innerHTML = "Last Name: " + activeUser.lname;
+        document.getElementById("rank").innerHTML = "Rank: " + activeUser.rank;
+        document.getElementById("achievements").innerHTML = "Achievements: " + activeUser.achievements;
 
         switch (Number(role)) {
             case 0:
-                role = "Потребител";
+                role = "User";
                 break;
             case 1:
-                role = "Пожарникар";
+                role = "Volunteer";
                 break;
             case 2:
 
-                role = "Диспечер";
+                role = "Dispatcher";
                 break;
             case 3:
-                role = "Админ";
+                role = "Admin";
                 break;
         }
 
-        document.getElementById("role").innerHTML = "Роля: " + role;
-        document.getElementById("region").innerHTML = "Регион: " + activeUser.region;
+        document.getElementById("role").innerHTML = "Role: " + role;
+        document.getElementById("region").innerHTML = "Region: " + activeUser.region;
 
         //If user is firefighter
         if (activeUser.role == 1) {
-            initFirefighter();
-            document.getElementById("firefighter-stats").style.display = 'block';
+            initFirefighter();;
             document.getElementById("firefighterTeamManagment").style.display = "block";
         } else {
-            document.getElementById("firefighter-stats").style.display = 'none';
             document.getElementById("firefighterTeamManagment").style.display = "none";
         }
 
@@ -56,8 +56,8 @@ window.onload = () => {
             initMapForSignal();
 
             if (am.getSignals() != null) {
-                forEachOption(sigSel, am.getSignalsWithoutTeamSelected(), "Изберете сигнал");
-                forEachOption(sigPendingSel, am.getSignalsWithTeamSelected(), "Изберете сигнал");
+                forEachOption(sigSel, am.getSignalsWithoutVolunteerSelected(), "Изберете сигнал");
+                forEachOption(sigPendingSel, am.getSignalsWithVolunteerSelected(), "Изберете сигнал");
                 forEachOption(sigAccSel, am.getAcceptedSignals(), "Изберете сигнал");
                 forEachOption(sigClosedSel, am.getClosedSignals(), "Изберете сигнал");
             }
@@ -75,18 +75,20 @@ window.onload = () => {
             document.getElementById("dispatcherTabs").style.display = "none";
         }
 
-        let ids = ["registerEmployee", "registerCar", "registerTeam", "adminTabs"];
+        let ids = ["registerEmployee", "adminTabs"];
 
         //If user is admin
         if (activeUser.role == 3) {
             document.getElementById("deleteAll").style.display = "inline";
             document.getElementById("deleteAcc").style.display = "none";
+
             for (const id of ids) {
                 document.getElementById(id).style.display = "block";
             }
-            document.getElementById("registerCar").parentElement.classList.add("is-hidden");
-            document.getElementById("registerTeam").parentElement.classList.add("is-hidden");
-            forEachCar(carSel);
+            
+            //document.getElementById("registerCar").parentElement.classList.add("is-hidden");
+            //document.getElementById("registerTeam").parentElement.classList.add("is-hidden");
+            //forEachCar(carSel);
         } else {
             document.getElementById("deleteAll").style.display = "none";
             document.getElementById("deleteAcc").style.display = "inline";
@@ -112,7 +114,6 @@ window.onload = () => {
  */
 function initFirefighter() {
     if (activeUser.team == undefined || activeUser.team == null) {
-        document.getElementById("team").innerHTML = "Отбор: няма";
         document.getElementById("signalP").innerHTML = "Сигнали: няма";
         document.getElementById("signalWorkButtons").style.display = "none";
         document.getElementById("fireMapSignal").classList.remove('map');
@@ -207,10 +208,11 @@ function initFirefighter() {
     }
 }
 
+/* Old feature
 /**
  * Loads cars in the selected elemend
  * @param {DOMElement} selectElement
- */
+ 
 function forEachCar(selectElement) {
     let cars = am.getCars();
 
@@ -227,7 +229,7 @@ function forEachCar(selectElement) {
             }
         });
     }
-}
+}*/
 
 /**
  * Loads what function gives
@@ -247,7 +249,11 @@ function forEachOption(optionSelect, func, firstOption) {
 
     if (options != null) {
         options.forEach(element => {
-            optionSelect.options[optionSelect.options.length] = new Option(element.title ?? element.id, element.id);
+            if (element.fname == null) {
+                optionSelect.options[optionSelect.options.length] = new Option(element.title ?? element.id, element.id);
+            } else {
+                optionSelect.options[optionSelect.options.length] = new Option(element.fname + " " + element.lname, element.id);
+            }
         });
     }
 }
@@ -395,7 +401,7 @@ function chengeParentDivDisplay(parentDiv, id) {
     }
 }
 
-carSel.onchange = updateCarSel;
+//carSel.onchange = updateCarSel;
 
 /**
  * Arrow function that loads select element
@@ -529,9 +535,9 @@ sigClosedSel.onchange = () => {
  */
 function reloadSel() {
     let sels = [teamSel, teamPenSel, teamSigSel];
-
+    
     for (const sel of sels) {
-        forEachOption(sel, am.getTeamsForSignals(), "Изберете отбор");
+        forEachOption(sel, am.getVolunteersForSignals(), "Chose volunteers");
     }
 }
 
@@ -540,8 +546,8 @@ function reloadSel() {
  */
 function reloadSigSel() {
     if (am.getSignals() != null) {
-        forEachOption(sigSel, am.getSignalsWithoutTeamSelected(), "Изберете сигнал");
-        forEachOption(sigPendingSel, am.getSignalsWithTeamSelected(), "Изберете сигнал");
+        forEachOption(sigSel, am.getSignalsWithoutVolunteersSelected(), "Изберете сигнал");
+        forEachOption(sigPendingSel, am.getSignalsWithVolunteersSelected(), "Изберете сигнал");
     }
 }
 
@@ -572,15 +578,15 @@ function getInput(input, form = null) {
                 am.escapeHtml(employeeForm.elements.lname.value),
                 am.escapeHtml(employeeForm.elements.email.value),
                 am.escapeHtml(employeeForm.elements.pass.value),
-                am.escapeHtml(employeeForm.elements.role.value),
-                "Бургас"
+                2,
+                "Burgas"
             );
 
             let employeeError = document.getElementById("employeeError");
 
             switch (employeeOutput) {
                 case 0:
-                    updateCarSel();
+                    //updateCarSel();
                     employeeError.innerHTML = "Работникът е регестриран успешно!";
                     break;
                 case 1:
@@ -714,7 +720,7 @@ function getInput(input, form = null) {
                 signalForm = document.forms.signalPendingForm
             }
 
-            let signalOutput1 = am.assignTeamForSignal(
+            let signalOutput1 = am.assignVolunteerForSignal(
                 am.escapeHtml(signalForm.elements.signals.value),
                 am.escapeHtml(signalForm.elements.teams.value)
             )
