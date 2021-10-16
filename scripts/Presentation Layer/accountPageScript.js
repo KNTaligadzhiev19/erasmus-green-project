@@ -11,13 +11,102 @@ let teamSigSel = document.getElementById("signalTeam");
 
 window.onload = () => {
     let isEnter = (am.checkForEnterUser() == 'true');
+    let ranks = ["Djena(Script)", "Ivana", "Vanya Velikova"]
+    let role = activeUser.role;
+    let achievements = activeUser.achievements;
+
 
     if (isEnter) {
-        let role = activeUser.role;
+        if (activeUser.achievements.length == 0) {
+            activeUser.rank = "Citizen";
+        } else if (achievements.length >= 1 && achievements.length <= 4) {
+            activeUser.rank = "Exemplary citizen";
+        } else if (achievements.length >= 5 && achievements.length <= 8) {
+            activeUser.rank = "Ecologist";
+        } else if (achievements.length >= 9 && achievements.length <= 12) {
+            activeUser.rank = "Mega ecologist";
+        } else if (achievements.length >= 13 && achievements.length <= 16) {
+            activeUser.rank = "Super ecologist";
+        } else if (achievements.length >= 17 && achievements.length <= 19) {
+            activeUser.rank = "Super ecologist with cheese";
+        } else if (achievements.length == 20) {
+            activeUser.rank =  ranks[Math.floor(Math.random()*ranks.length)];
+        }
+
+        if (activeUser.role == 3) {
+            activeUser.rank = "Admin";
+        }
+        
+        for (let index = 0; index < achievements.length; index++) {
+            switch (achievements[index]) {
+                case 1:
+                    achievements[index] = "Meet Pepper";
+                    break;
+                case 2:
+                    achievements[index] = "Pick Up That Can";
+                    break;
+                case 3:
+                    achievements[index] = "That was close";
+                    break;
+                case 4:
+                    achievements[index] = "Went for a walk";
+                    break;
+                case 5:
+                    achievements[index] = "Super Monitoring";
+                    break;
+                case 6:
+                    achievements[index] = "Time Traveller";
+                    break;
+                case 7:
+                    achievements[index] = "Recycleman";
+                    break;
+                case 8:
+                    achievements[index] = "What are you doing?";
+                    break;
+                case 9:
+                    achievements[index] = "Sweet Dreams";
+                    break;
+                case 10:
+                    achievements[index] = "When you just can't fix a bug";
+                    break;
+                case 11:
+                    achievements[index] = "The Start";
+                    break;
+                case 12:
+                    achievements[index] = "The Push";
+                    break;
+                case 13:
+                    achievements[index] = "On a long adventure";
+                    break;
+                case 14:
+                    achievements[index] = "What a great video";
+                    break;
+                case 15:
+                    achievements[index] = "What is this?";
+                    break;
+                case 16:
+                    achievements[index] = "The Secret Class";
+                    break;
+                case 17:
+                    achievements[index] = "Merry Christmas (Every day can be christmas)";
+                    break;
+                case 18:
+                    achievements[index] = "Deja Vu";
+                    break;
+                case 19:
+                    achievements[index] = "Coffee is the best served bitter and strong";
+                    break;
+                case 20:
+                    achievements[index] = "The truth about Kondoriano";
+                    break;
+                default:
+                    break;
+            }
+        }
         document.getElementById("fname").innerHTML = "First Name: " + activeUser.fname;
         document.getElementById("lname").innerHTML = "Last Name: " + activeUser.lname;
         document.getElementById("rank").innerHTML = "Rank: " + activeUser.rank;
-        document.getElementById("achievements").innerHTML = "Achievements: " + activeUser.achievements;
+        document.getElementById("achievements").innerHTML = "Achievements: " + achievements.join(", ");
 
         switch (Number(role)) {
             case 0:
