@@ -98,7 +98,8 @@
                 </div>
               </div>
             </div>
-               <!--Коце сложи тоя бутон на мястото му, моля!-->
+          </div>
+          <div class="navbar-end">
             <div class="navbar-item">
               <button class="button is-success" onclick="getInput(1)"><span style="margin-right: 2%;" class="icon"><i
                     class="fas fa-sign-out-alt"></i></span> Log Out</button>
@@ -189,7 +190,8 @@
       <p id="achievements">Achievements: </p>
     </a>
     </div>
-  </article><br><br><br><br><br><br> <!--Коце, здрасти отновоно, тука може малко тея br да махнеш If this is left in production and you don't know bulgarian, it says that "Яша" is the best bulgarian word! -->
+  </article><br><br><br><br><br><br>
+  <!--Коце, здрасти отновоно, тука може малко тея br да махнеш If this is left in production and you don't know bulgarian, it says that "Яша" is the best bulgarian word! -->
 
   <div class="tabs is-boxed is-centered" id="adminTabs">
     <ul>
@@ -204,7 +206,8 @@
 
   <div class="px-3" id="tab-content">
     <div id="registerEmployee-tab">
-      <div id="registerEmployee" class="box" style="width: 80%; margin-left: 10%; margin-right: 10%; margin-bottom: -20%;">
+      <div id="registerEmployee" class="box"
+        style="width: 80%; margin-left: 10%; margin-right: 10%; margin-bottom: -20%;">
         <p class="title is-3 has-text-centered">Dispatcher registration </p>
         <br>
         <form onreset="return getInput(4)" method="POST" name="registerEmployee">
@@ -250,203 +253,204 @@
       </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
 
-  <div class="tabs is-boxed is-centered" id="dispatcherTabs" style="margin-top: -5%;">
-    <ul>
-      <li class="is-active" data-target="signal-actions">
-        <a>
-          <span class="icon is-small"><i class="fas fa-file-contract"></i></span>
-          <span>Signals</span>
-        </a>
-      </li>
-    </ul>
-  </div><br><br><br><br><br>
+    <div class="tabs is-boxed is-centered" id="dispatcherTabs" style="margin-top: -5%;">
+      <ul>
+        <li class="is-active" data-target="signal-actions">
+          <a>
+            <span class="icon is-small"><i class="fas fa-file-contract"></i></span>
+            <span>Signals</span>
+          </a>
+        </li>
+      </ul>
+    </div><br><br><br><br><br>
 
-  <div class="px-2" id="tab-content">
-    <div id="signal-actions">
-      <div id="signalDiv" class="box" style="width: 80%; margin-left: 10%; margin-right: 10%; margin-top: -5%;">
-        <form method="POST" name="signalForm" id="signalForm">
-          <label class="label" for="signals">Избери незададен сигнал:</label>
-          <div class="control">
-            <div class="select">
-              <select name="signals" id="signals">
-                <option value="" selected="selected">Select signal</option>
-              </select>
-            </div>
-          </div>
-          <br>
-
-          <div id="displaySignal">
-            <p id="title"></p>
-            <p id="names"></p>
-            <p id="type"></p>
-            <br>
-
-            <div id="map" class="map" style="width: 100%;">
-
-            </div>
-            <br>
-            <p id="des"></p>
-            <br>
-            <label class="label" for="volunteers">Select Volunteer:</label>
+    <div class="px-2" id="tab-content">
+      <div id="signal-actions">
+        <div id="signalDiv" class="box" style="width: 80%; margin-left: 10%; margin-right: 10%; margin-top: -5%;">
+          <form method="POST" name="signalForm" id="signalForm">
+            <label class="label" for="signals">Избери незададен сигнал:</label>
             <div class="control">
               <div class="select">
-                <select name="volunteers" id="volunteers">
-                  <option value="" selected="volunteers">Volunteers</option>
+                <select name="signals" id="signals">
+                  <option value="" selected="selected">Select signal</option>
                 </select>
               </div>
             </div>
             <br>
 
-            <input type="reset" onclick="getInput(7, 1)" value="Accept" class="button is-success">
-            <input type="reset" onclick="getInput(8, 1)" value="Reject" class="button is-danger"><br><br>
-            <p id="signalError" class="has-text-danger"></p>
-            <br>
-          </div>
-        </form>
+            <div id="displaySignal">
+              <p id="title"></p>
+              <p id="names"></p>
+              <p id="type"></p>
+              <br>
 
-        <form method="POST" name="signalPendingForm" id="signalPendingForm">
-          <label class="label" for="signals">Избери постъпил сигнал:</label>
-          <div class="control">
-            <div class="select">
-              <select name="signals" id="signalsPending">
-                <option value="" selected="selected">избери сигнал</option>
-              </select>
-            </div>
-            <br>
+              <div id="map" class="map" style="width: 100%;">
 
-            <div id="displayPendingSignal"><br>
-              <p id="titlePendingSignal"></p>
-              <p id="teamPendingSignal"></p>
-              <p id="namesPendingSignal"></p>
-              <p id="typePendingSignal"></p><br>
-              <div id="mapPendingSignal" class="map">
-
-              </div><br>
-              <p id="desPendingSignals"></p><br>
-              <label class="label" for="volunteers">Избери отбор за смяна:</label>
+              </div>
+              <br>
+              <p id="des"></p>
+              <br>
+              <label class="label" for="volunteers">Select Volunteer:</label>
               <div class="control">
                 <div class="select">
-                  <select name="volunteers" id="volunteersPendingSignal">
-                    <option value="" selected="selected">Volunteer</option>
+                  <select name="volunteers" id="volunteers">
+                    <option value="" selected="volunteers">Volunteers</option>
                   </select>
                 </div>
               </div>
               <br>
 
-              <input type="reset" onclick="getInput(7, 2)" value="Change team" class="button is-success">
-              <input type="reset" onclick="getInput(8, 2)" value="Delete" class="button is-danger">
-              <p id="signalPendingError"></p>
-            </div>
-        </form>
-        <br>
-        <form method="POST" name="signalAcceptedForm" id="signalAcceptedForm">
-          <label class="label" for="signals">Избери приет сигнал:</label>
-          <div class="control">
-            <div class="select">
-              <select name="signals" id="signalsAccepted">
-                <option value="" selected="selected">Избери сигнал</option>
-              </select>
-            </div>
-            <br>
-
-            <div id="displayAcceptedSignal"><br>
-              <p id="titleAcceptedSignal"></p>
-              <p id="namesAcceptedSignal"></p>
-              <p id="startOfWorkingAccSig"></p>
-              <p id="typeAcceptedSignal"></p>
-              <p id="desAcceptedSignals"></p><br>
-              <div id="mapAcceptedSignal" class="map"></div><br>
-            </div>
-        </form>
-        <br>
-        <form method="POST" name="signalClosedForm" id="signalClosedForm">
-          <label class="label" for="signals">Избери завършен сигнал:</label>
-          <div class="control">
-            <div class="select">
-              <select name="signals" id="signalsClosed">
-                <option value="" selected="selected">избери сигнал</option>
-              </select>
-            </div>
-          </div>
-          <br>
-
-          <div id="displayClosedSignal">
-            <p id="titleClosedP"></p>
-            <p id="namesClosedP"></p>
-            <p id="startOfWorkingClosedP"></p>
-            <p id="endOfWorkingClosedP"></p>
-            <p id="timeTakenP"></p>
-            <p id="typeClosedP"></p>
-            <p id="desClosedP"></p><br>
-            <div id="mapClosedMap" class="map"></div><br>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  </div>
-  
-  
-    <div id="send-signal" class="is-hidden">
-      <div class="columns" id="sendSignalDiv" style="width: 74%; margin-left: 13%; margin-right: 13%; margin-top: -10%;">
-        <div class="column">
-          <form class="box" onreset="return getInput(11)" method="POST" name="signalSubmitForm">
-            <br>
-            <p class="title is-4">Изпрати сигнал</p><br>
-            <label class="label" for="title">Заглавие:</label>
-            <p class="control has-icons-left">
-              <input class="input" type="text" id="title" name="title" placeholder="Заглавие" required>
-              <span class="icon is-small is-left">
-                <i class="fas fa-heading"></i>
-              </span>
-            </p><br>
-
-            <label class="label" for="names">Име и фамилия:</label>
-            <p class="control has-icons-left">
-              <input class="input" type="text" id="Signalnames" name="names" placeholder="Име и фамилия" required>
-              <span class="icon is-small is-left">
-                <i class="fas fa-id-badge"></i>
-              </span>
-            </p><br>
-
-            <label class="label" for="type">Какъв е проблема:</label>
-            <div class="select">
-              <select id="type" name="type">
-                  <option value="" selected="selected">Изберете проблем</option>
-                  <option value="Fire">Пожар</option>
-                  <option value="Rescue">Спасяване</option>
-                  <option value="Flood">Наводнение</option>
-                  <option value="Another">Друго</option>
-                </select>
-              </div>
-              <br><br>
-
-              <label class="label" for="mapSignal">Изберете адрес</label>
-              <div id="mapSignal" name="mapSignal" class="map" style="width: 100%;"></div><br><br>
-
-              <label class="label" for="des">Кратко описание:</label>
-              <textarea class="textarea is-info" name="des" id="des" rows="4" cols="50" placeholder="Кратко описание"
-                required></textarea><br>
-
-
-              <label class="label" for="type">Изберете отбор за сиганала:</label>
-              <div class="select">
-                <select name="teams" id="signalTeam">
-                  <option value="" selected="teams">Изберете отбор</option>
-                </select>
-              </div>
-              <br><br>
-
+              <input type="reset" onclick="getInput(7, 1)" value="Accept" class="button is-success">
+              <input type="reset" onclick="getInput(8, 1)" value="Reject" class="button is-danger"><br><br>
+              <p id="signalError" class="has-text-danger"></p>
               <br>
-              <input type="reset" value="Подаване" class="button is-success"><br><br>
-              <p id="error" class="has-text-danger"></p>
-            </form>
-          </div>
+            </div>
+          </form>
+
+          <form method="POST" name="signalPendingForm" id="signalPendingForm">
+            <label class="label" for="signals">Избери постъпил сигнал:</label>
+            <div class="control">
+              <div class="select">
+                <select name="signals" id="signalsPending">
+                  <option value="" selected="selected">избери сигнал</option>
+                </select>
+              </div>
+              <br>
+
+              <div id="displayPendingSignal"><br>
+                <p id="titlePendingSignal"></p>
+                <p id="teamPendingSignal"></p>
+                <p id="namesPendingSignal"></p>
+                <p id="typePendingSignal"></p><br>
+                <div id="mapPendingSignal" class="map">
+
+                </div><br>
+                <p id="desPendingSignals"></p><br>
+                <label class="label" for="volunteers">Избери отбор за смяна:</label>
+                <div class="control">
+                  <div class="select">
+                    <select name="volunteers" id="volunteersPendingSignal">
+                      <option value="" selected="selected">Volunteer</option>
+                    </select>
+                  </div>
+                </div>
+                <br>
+
+                <input type="reset" onclick="getInput(7, 2)" value="Change team" class="button is-success">
+                <input type="reset" onclick="getInput(8, 2)" value="Delete" class="button is-danger">
+                <p id="signalPendingError"></p>
+              </div>
+          </form>
+          <br>
+          <form method="POST" name="signalAcceptedForm" id="signalAcceptedForm">
+            <label class="label" for="signals">Избери приет сигнал:</label>
+            <div class="control">
+              <div class="select">
+                <select name="signals" id="signalsAccepted">
+                  <option value="" selected="selected">Избери сигнал</option>
+                </select>
+              </div>
+              <br>
+
+              <div id="displayAcceptedSignal"><br>
+                <p id="titleAcceptedSignal"></p>
+                <p id="namesAcceptedSignal"></p>
+                <p id="startOfWorkingAccSig"></p>
+                <p id="typeAcceptedSignal"></p>
+                <p id="desAcceptedSignals"></p><br>
+                <div id="mapAcceptedSignal" class="map"></div><br>
+              </div>
+          </form>
+          <br>
+          <form method="POST" name="signalClosedForm" id="signalClosedForm">
+            <label class="label" for="signals">Избери завършен сигнал:</label>
+            <div class="control">
+              <div class="select">
+                <select name="signals" id="signalsClosed">
+                  <option value="" selected="selected">избери сигнал</option>
+                </select>
+              </div>
+            </div>
+            <br>
+
+            <div id="displayClosedSignal">
+              <p id="titleClosedP"></p>
+              <p id="namesClosedP"></p>
+              <p id="startOfWorkingClosedP"></p>
+              <p id="endOfWorkingClosedP"></p>
+              <p id="timeTakenP"></p>
+              <p id="typeClosedP"></p>
+              <p id="desClosedP"></p><br>
+              <div id="mapClosedMap" class="map"></div><br>
+            </div>
+          </form>
         </div>
       </div>
     </div>
+  </div>
 
-  <div id="firefighterTeamManagment" class="box" style="width: 72%; margin-left: 14%; margin-right: 14%; margin-top: -20%;">
+
+  <div id="send-signal" class="is-hidden">
+    <div class="columns" id="sendSignalDiv" style="width: 74%; margin-left: 13%; margin-right: 13%; margin-top: -10%;">
+      <div class="column">
+        <form class="box" onreset="return getInput(11)" method="POST" name="signalSubmitForm">
+          <br>
+          <p class="title is-4">Изпрати сигнал</p><br>
+          <label class="label" for="title">Заглавие:</label>
+          <p class="control has-icons-left">
+            <input class="input" type="text" id="title" name="title" placeholder="Заглавие" required>
+            <span class="icon is-small is-left">
+              <i class="fas fa-heading"></i>
+            </span>
+          </p><br>
+
+          <label class="label" for="names">Име и фамилия:</label>
+          <p class="control has-icons-left">
+            <input class="input" type="text" id="Signalnames" name="names" placeholder="Име и фамилия" required>
+            <span class="icon is-small is-left">
+              <i class="fas fa-id-badge"></i>
+            </span>
+          </p><br>
+
+          <label class="label" for="type">Какъв е проблема:</label>
+          <div class="select">
+            <select id="type" name="type">
+              <option value="" selected="selected">Изберете проблем</option>
+              <option value="Fire">Пожар</option>
+              <option value="Rescue">Спасяване</option>
+              <option value="Flood">Наводнение</option>
+              <option value="Another">Друго</option>
+            </select>
+          </div>
+          <br><br>
+
+          <label class="label" for="mapSignal">Изберете адрес</label>
+          <div id="mapSignal" name="mapSignal" class="map" style="width: 100%;"></div><br><br>
+
+          <label class="label" for="des">Кратко описание:</label>
+          <textarea class="textarea is-info" name="des" id="des" rows="4" cols="50" placeholder="Кратко описание"
+            required></textarea><br>
+
+
+          <label class="label" for="type">Изберете отбор за сиганала:</label>
+          <div class="select">
+            <select name="teams" id="signalTeam">
+              <option value="" selected="teams">Изберете отбор</option>
+            </select>
+          </div>
+          <br><br>
+
+          <br>
+          <input type="reset" value="Подаване" class="button is-success"><br><br>
+          <p id="error" class="has-text-danger"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div id="firefighterTeamManagment" class="box"
+    style="width: 72%; margin-left: 14%; margin-right: 14%; margin-top: -20%;">
     <p id="signalP"></p>
     <p id="signalNameP"></p>
     <p id="signalTypeP"></p><br>
