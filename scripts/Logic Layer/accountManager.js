@@ -69,7 +69,7 @@ let admins = [{
  * @param {number} team Team of the user
  * @returns {Object} The user object
  */
-function User(fname, lname, email, pass, id, role, region = "Бургас", rank, achievements, signal = null) {
+function User(fname, lname, email, pass, id, role, region = "Burgas", rank, achievements, signal = null) {
     this.fname = fname;
     this.lname = lname;
     this.email = email;
@@ -188,7 +188,7 @@ function AccountManager(localStorage) {
 
     /**
      * Function to save the users in localStorage.
-     * @returns {array} Array of all acounts.
+     * @returns {array} Array of all accounts.
      */
     function getAll() {
         load();

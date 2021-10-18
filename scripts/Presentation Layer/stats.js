@@ -32,21 +32,21 @@ window.onload = () => {
 };
 
 /**
- * Function that get stast
- * for stast page
+ * Function that get stats
+ * for stats page
  */
 function getNumbers() {
     numberOfSingals = am.getNumberOfSignals() ?? 0;
-    //numberOfTeams = am.getNumberOfTeam() ?? 0;
-    //numberOfFires = am.getNumberOfFires() ?? 0;
-    //numberOfFloods = am.getNumberOfFloods() ?? 0;
-    //numberOfRescues = am.getNumberOfRescues() ?? 0;
-    //numberOfFreeCars = am.getNumberOfFreeCars() ?? 0;
-    //numberOfCars = am.getNumberOfCars() ?? 0;
+    numberOfTeams = JSON.parse(localStorage.signals).filter(signal => signal.type == "Earth").length ?? 0;
+    numberOfFires = JSON.parse(localStorage.signals).filter(signal => signal.type == "Trash").length ?? 0;
+    numberOfFloods = JSON.parse(localStorage.signals).filter(signal => signal.type == "Water").length ?? 0;
+    numberOfRescues = JSON.parse(localStorage.signals).filter(signal => signal.type == "Another").length ?? 0;
+    numberOfFreeCars = JSON.parse(localStorage.users).filter(user => user.role == 1).filter(vol => vol.signal == null).length ?? 0;
+    numberOfCars = JSON.parse(localStorage.users).filter(user => user.role == 1).length  ?? 0;
 
     if (numberOfSingals != 0) {
         let signals = am.getAcceptedSignals();
-        console.log(signals);
+        
         coordinatesX = [];
         coordinatesY = [];
 
@@ -59,7 +59,7 @@ function getNumbers() {
 
 /**
  * Function that create animation
- * for countiong word
+ * for counting word
  * @param {number} counterId The id of the html p element
  * @param {number} target The target number
  */
@@ -139,7 +139,7 @@ function initMap(coordinatesXs, coordinatesYs, id) {
         if (map.hasFeatureAtPixel(event.pixel) === true) {
             var coordinate = event.coordinate;
 
-            content.innerHTML = '<b>Активен сигнал</b>';
+            content.innerHTML = '<b>Active signal</b>';
             overlay.setPosition(coordinate);
         } else {
             overlay.setPosition(undefined);

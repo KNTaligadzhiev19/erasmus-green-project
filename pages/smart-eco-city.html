@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SmartEcoCity - Game</title>
-  <link rel="icon" href="../img/Tab-Icon.png">
+  <link rel="icon" href="../img/logo.jpg">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../css/footer-style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" />
@@ -16,15 +16,16 @@
   <script defer src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
   <!--<link rel="stylesheet" href="../css/debug.css">-->
   <style>
+    /*
     body {
       padding: 0;
       margin: 0
     }
 
     #unity-container {
-      position: absolute
-    }
 
+    }
+    
     #unity-container.unity-desktop {
       left: 50%;
       top: 50%;
@@ -34,7 +35,7 @@
     #unity-container.unity-mobile {
       width: 100%;
       height: 100%
-    }
+    }*/
 
     #unity-canvas {
       background: #FFFFFF
@@ -112,6 +113,7 @@
       padding: 10px;
       display: none
     }
+   
   </style>
 </head>
 
@@ -121,7 +123,7 @@
       <nav class="navbar">
         <div class="navbar-brand">
           <a class="navbar-item" href="../index.html">
-            <img src="../img/Logo.png" width="70" />
+            <img src="../img/logo.jpg" width="30" />
           </a>
           <a class="navbar-item is-hidden-desktop" href="mailto:fireDepartment2021@codingburgas.bg">
             <span class="icon" style="color: #333;">
@@ -184,7 +186,7 @@
     <progress class="progress is-small is-primary" max="100"></progress>
   </div>
 
-  <section style="margin: 5%;">
+  <section style="margin: 5%; margin-bottom: auto;">
     <div class="breadcrumb" aria-label="breadcrumbs">
       <ul>
         <li>
@@ -215,8 +217,8 @@
     </div><br>
   </section>
 
-  <div id="unity-container" class="unity-desktop" style="margin-top: 10%;">
-    <canvas id="unity-canvas" width=1100 height=600></canvas>
+  <div id="unity-container" class="container is-centered">
+    <canvas id="unity-canvas" class="cotainer is-centered"></canvas>
     <div id="unity-loading-bar">
       <div id="unity-logo"></div>
       <div id="unity-progress-bar-empty">
@@ -227,19 +229,18 @@
       WebGL builds are not supported on mobile devices.
     </div>
     <div id="unity-footer">
-      <div id="unity-webgl-logo"></div>
       <div id="unity-fullscreen-button"></div>
-      <div id="unity-build-title">Smart Eco City</div>
     </div>
   </div>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br>
+  
 
   <footer class="footer1">
     <div class="container1">
       <div class="row1">
         <div class="footer1-col">
           <h4>ABOUT SITE</h4>
-          <p>In this site you can find some useful information about ecology and other topics. You can also find some
+          <p style="text-align: justify;">In this site you can find some useful information about ecology and other topics. You can also find some
             games and report contaminated
             places to and will try to find volunteers to clean up the place.</p>
         </div>
@@ -258,11 +259,11 @@
         <div class="footer1-col">
           <h4>LINKS</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Arduino 101</a></li>
-            <li><a href="#">SmartEcoCity</a></li>
-            <li><a href="#">Влизане</a></li>
-            <li><a href="#">Регистрация</a></li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="arduino-101.html">Arduino 101</a></li>
+            <li><a href="smart-eco-city.html">SmartEcoCity</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
             <li><a href="https://github.com/KNTaligadzhiev19/erasmus-green-project" target="_blank">GitHub</a></li>
           </ul>
         </div>
@@ -312,8 +313,8 @@
         mobileWarning.style.display = "none";
       }, 5000);
     } else {
-      canvas.style.width = "1100px";
-      canvas.style.height = "600px";
+      canvas.style.width = "1344px";
+      canvas.style.height = "765px";
     }
     canvas.style.background = "url('" + buildUrl + "/WebGL Build 2.jpg') center / cover";
     loadingBar.style.display = "block";

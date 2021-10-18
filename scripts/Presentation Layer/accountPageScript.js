@@ -144,10 +144,10 @@ window.onload = () => {
             initMapForSignal();
 
             if (am.getSignals() != null) {
-                forEachOption(sigSel, am.getSignalsWithoutVolunteerSelected(), "Изберете сигнал");
-                forEachOption(sigPendingSel, am.getSignalsWithVolunteerSelected(), "Изберете сигнал");
-                forEachOption(sigAccSel, am.getAcceptedSignals(), "Изберете сигнал");
-                forEachOption(sigClosedSel, am.getClosedSignals(), "Изберете сигнал");
+                forEachOption(sigSel, am.getSignalsWithoutVolunteerSelected(), "Select a signal");
+                forEachOption(sigPendingSel, am.getSignalsWithVolunteerSelected(), "Select a signal");
+                forEachOption(sigAccSel, am.getAcceptedSignals(), "Select a signal");
+                forEachOption(sigClosedSel, am.getClosedSignals(), "Select a signal");
             }
 
             reloadSel();
@@ -188,6 +188,7 @@ window.onload = () => {
         window.location.href = "../index.html";
     }
 
+    /*
     // Initialize all input of type date
     var calendars = bulmaCalendar.attach('[type="date"]', {
         dateFormat: 'DD/MM/YYYY',
@@ -195,18 +196,19 @@ window.onload = () => {
         minDate: new Date(),
         weekStart: 1
     })
+    */
 }
 
 /**
- * Function that initalise firefighter systems
+ * Function that initialise firefighter systems
  */
 function initFirefighter() {
     if (am.getUserWithId(activeUser.id).signal != null) {
         signal = am.getSignalsWithId(am.getUserWithId(activeUser.id).signal)
-        document.getElementById("signalP").innerHTML = "Сигнал: " + signal.id;
-        document.getElementById("signalNameP").innerHTML = "Заглавие: " + signal.title;
-        document.getElementById("signalTypeP").innerHTML = "Тип: " + signal.type;
-        document.getElementById("signalDesP").innerHTML = "Описание: " + signal.description;
+        document.getElementById("signalP").innerHTML = "Signal: " + signal.id;
+        document.getElementById("signalNameP").innerHTML = "Title: " + signal.title;
+        document.getElementById("signalTypeP").innerHTML = "Problem: " + signal.type;
+        document.getElementById("signalDesP").innerHTML = "Description: " + signal.description;
         initMap(signal.coordinatesX, signal.coordinatesY, "fireMapSignal");
 
         if (signal.isClosed) {
@@ -222,7 +224,7 @@ function initFirefighter() {
             }
         }
     } else {
-        document.getElementById("signalP").innerHTML = "Сигнал: няма";
+        document.getElementById("signalP").innerHTML = "Signal: none";
         document.getElementById("signalWorkButtons").style.display = "none";
         document.getElementById("fireMapSignal").classList.remove('map');
     }
@@ -443,10 +445,10 @@ sigSel.onchange = () => {
     chengeParentDivDisplay(parentDiv, id);
 
     if (signal != undefined) {
-        titleP.innerHTML = "Заглавие: " + signal.title;
-        namesP.innerHTML = "Име на изпратилия сигнала: " + signal.names;
-        typeP.innerHTML = "Тип: " + signal.type;
-        desP.innerHTML = "Описание: " + signal.description;
+        titleP.innerHTML = "Title: " + signal.title;
+        namesP.innerHTML = "Name of the sender of the signal: " + signal.names;
+        typeP.innerHTML = "Problem: " + signal.type;
+        desP.innerHTML = "Description: " + signal.description;
     }
 }
 
@@ -471,11 +473,11 @@ sigPendingSel.onchange = () => {
     chengeParentDivDisplay(parentDiv, id);
 
     if (signal != undefined) {
-        titleP.innerHTML = "Заглавие: " + signal.title;
-        teamP.innerHTML = "Отбор: " + signal.team;
-        namesP.innerHTML = "Име на изпратилия сигнала: " + signal.names;
-        typeP.innerHTML = "Тип: " + signal.type;
-        desP.innerHTML = "Описание: " + signal.description;
+        titleP.innerHTML = "Title: " + signal.title;
+        teamP.innerHTML = "Volunteer: " + JSON.parse(localStorage.users).find(user => user.id = signal.volunteer).fname + " " + JSON.parse(localStorage.users).find(user => user.id = signal.volunteer).lname;
+        namesP.innerHTML = "Name of the sender of the signal: " + signal.names;
+        typeP.innerHTML = "Problem: " + signal.type;
+        desP.innerHTML = "Description: " + signal.description;
     }
 }
 
@@ -504,12 +506,12 @@ sigAccSel.onchange = () => {
     let startDate = new Date(signal.start);
 
     if (signal != undefined) {
-        titleP.innerHTML = "Заглавие: " + signal.title;
-        //teamP.innerHTML = "Отбор: " + signal.team;
-        namesP.innerHTML = "Име на изпратилия сигнала: " + signal.names;
-        typeP.innerHTML = "Тип: " + signal.type;
-        desP.innerHTML = "Описание: " + signal.description;
-        startP.innerHTML = "Начало на работа по сигнала: " + startDate.getHours() + ":" + startDate.getMinutes();
+        titleP.innerHTML = "Title: " + signal.title;
+        teamP.innerHTML = "Volunteer: " + JSON.parse(localStorage.users).find(user => user.id = signal.volunteer).fname + " " + JSON.parse(localStorage.users).find(user => user.id = signal.volunteer).lname;
+        namesP.innerHTML = "Name of the sender of the signal: " + signal.names;
+        typeP.innerHTML = "Problem: " + signal.type;
+        desP.innerHTML = "Description: " + signal.description;
+        startP.innerHTML = "Start working on the signal: " + startDate.getHours() + ":" + startDate.getMinutes();
     }
 }
 
@@ -540,13 +542,13 @@ sigClosedSel.onchange = () => {
     let endDate = new Date(signal.end);
 
     if (signal != undefined) {
-        titleP.innerHTML = "Заглавие: " + signal.title;
-        namesP.innerHTML = "Име на изпратилия сигнала: " + signal.names;
-        typeP.innerHTML = "Тип: " + signal.type;
-        desP.innerHTML = "Описание: " + signal.description;
-        startP.innerHTML = "Начало на работа по сигнала: " + startDate.getHours() + ":" + startDate.getMinutes();
-        endP.innerHTML = "Край на работа по сигнала: " + endDate.getHours() + ":" + endDate.getMinutes();
-        timeP.innerHTML = "Времетраене: " + signal.timeToComplete;
+        titleP.innerHTML = "Title: " + signal.title;
+        namesP.innerHTML = "Name of the sender of the signal: " + signal.names;
+        typeP.innerHTML = "Problem: " + signal.type;
+        desP.innerHTML = "Description: " + signal.description;
+        startP.innerHTML = "Start working on the signal: " + startDate.getHours() + ":" + startDate.getMinutes();
+        endP.innerHTML = "Finish working on the signal: " + endDate.getHours() + ":" + endDate.getMinutes();
+        timeP.innerHTML = "Duration: " + signal.timeToComplete;
     }
 }
 
@@ -566,8 +568,8 @@ function reloadSel() {
  */
 function reloadSigSel() {
     if (am.getSignals() != null) {
-        forEachOption(sigSel, am.getSignalsWithoutVolunteerSelected(), "Изберете сигнал");
-        forEachOption(sigPendingSel, am.getSignalsWithVolunteerSelected(), "Изберете сигнал");
+        forEachOption(sigSel, am.getSignalsWithoutVolunteerSelected(), "Select a signal");
+        forEachOption(sigPendingSel, am.getSignalsWithVolunteerSelected(), "Select a signal");
     }
 }
 
@@ -607,22 +609,22 @@ function getInput(input, form = null) {
             switch (employeeOutput) {
                 case 0:
                     //updateCarSel();
-                    employeeError.innerHTML = "Работникът е регестриран успешно!";
+                    employeeError.innerHTML = "The employee is registered successfully!";
                     break;
                 case 1:
-                    employeeError.innerHTML = "Първото име трябва да започва с главна буква!";
+                    employeeError.innerHTML = "The first name must start with a capital letter!";
                     break;
                 case 2:
-                    employeeError.innerHTML = "Фамилното име трябва да започва с главна буква!";
+                    employeeError.innerHTML = "The last name must start with a capital letter!";
                     break;
                 case 3:
-                    employeeError.innerHTML = "Паролата трябва да е най-малко 8 символа!";
+                    employeeError.innerHTML = "The password must be at least 8 characters!";
                     break;
                 case 4:
-                    employeeError.innerHTML = "Вече има регестриран потребител с такъв e-mail!";
+                    employeeError.innerHTML = "There is already a registered user with such an email!";
                     break;
                 case 5:
-                    employeeError.innerHTML = "Въведеният e-mail е невалиден!";
+                    employeeError.innerHTML = "The entered e-mail is invalid!";
                     break;
                 default:
                     console.log("A wild error appeared");
@@ -849,11 +851,11 @@ function getInput(input, form = null) {
             let signal = am.getSignalsWithId(am.getUserWithId(activeUser.id).signal)
 
             if (signal.start == null) {
-                if (confirm("Наистина ли искате да започнете да работите?")) {
+                if (confirm("Do you really want to start working? ")) {
                     am.startWorking(signal.id);
                 }
             } else {
-                if (confirm("Наистина ли искат да спрете да работите?")) {
+                if (confirm("Do you really want to stop working? ")) {
                     am.endWorking(signal.id);
                 }
             }

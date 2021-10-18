@@ -6,14 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Account</title>
-  <link rel="icon" href="../img/Tab-Icon.png">
+  <link rel="icon" href="../img/logo.jpg">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../css/footer-style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-social@1/bin/bulma-social.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css" />
-  <link href="../node_modules/bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">
   <script defer src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css">
@@ -37,14 +36,9 @@
       <nav class="navbar">
         <div class="navbar-brand">
           <a class="navbar-item" href="../index.html">
-            <img src="../img/Logo.png" width="70" />
+            <img src="../img/logo.jpg" width="30" />
           </a>
-          <a class="navbar-item is-hidden-desktop" href="tel:112">
-            <span class="icon" style="color: #333;">
-              <i class="fa fa-lg fa-phone-alt"></i>
-            </span>
-          </a>
-          <a class="navbar-item is-hidden-desktop" href="mailto:fireDepartment2021@codingburgas.bg">
+          <a class="navbar-item is-hidden-desktop" href="mailto:smart@codingburgas.bg">
             <span class="icon" style="color: #333;">
               <i class="fa fa-lg fa-envelope"></i>
             </span>
@@ -75,7 +69,7 @@
                 <a class="navbar-item" href="arduino-101.html">
                   Arduino 101 - Game
                 </a>
-                <a class="navbar-item" href="stats.htmll">
+                <a class="navbar-item" href="stats.html">
                   Stats
                 </a>
                 <a class="navbar-item" href="news.html">
@@ -111,7 +105,7 @@
     <progress class="progress is-small is-primary" max="100"></progress>
   </div>
 
-  <section style="margin: 5%">
+  <section style="margin: 5%; margin-bottom: auto;">
     <div class="breadcrumb" aria-label="breadcrumbs">
       <ul>
         <li>
@@ -190,7 +184,7 @@
       <p id="achievements">Achievements: </p>
     </a>
     </div>
-  </article><br><br><br><br><br><br>
+  </article><br>
   <!--Коце, здрасти отновоно, тука може малко тея br да махнеш If this is left in production and you don't know bulgarian, it says that "Яша" is the best bulgarian word! -->
 
   <div class="tabs is-boxed is-centered" id="adminTabs">
@@ -207,7 +201,7 @@
   <div class="px-3" id="tab-content">
     <div id="registerEmployee-tab">
       <div id="registerEmployee" class="box"
-        style="width: 80%; margin-left: 10%; margin-right: 10%; margin-bottom: -20%;">
+        style="width: 80%; margin-left: 10%; margin-right: 10%;">
         <p class="title is-3 has-text-centered">Dispatcher registration </p>
         <br>
         <form onreset="return getInput(4)" method="POST" name="registerEmployee">
@@ -250,10 +244,10 @@
           <button class="button is-success" type="reset">Register</button><br><br>
           <p id="employeeError" class="has-text-danger"></p>
         </form>
-      </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      </div><br>
     </div>
 
-    <div class="tabs is-boxed is-centered" id="dispatcherTabs" style="margin-top: -5%;">
+    <div class="tabs is-boxed is-centered" id="dispatcherTabs">
       <ul>
         <li class="is-active" data-target="signal-actions">
           <a>
@@ -262,17 +256,17 @@
           </a>
         </li>
       </ul>
-    </div><br><br><br><br><br>
+    </div><br>
 
     <div class="px-2" id="tab-content">
       <div id="signal-actions">
-        <div id="signalDiv" class="box" style="width: 80%; margin-left: 10%; margin-right: 10%; margin-top: -5%;">
+        <div id="signalDiv" class="box" style="width: 80%; margin-left: 10%; margin-right: 10%;">
           <form method="POST" name="signalForm" id="signalForm">
-            <label class="label" for="signals">Избери незададен сигнал:</label>
+            <label class="label" for="signals">Select a received signal:</label>
             <div class="control">
               <div class="select">
                 <select name="signals" id="signals">
-                  <option value="" selected="selected">Select signal</option>
+                  <option value="" selected="selected">Select a signal</option>
                 </select>
               </div>
             </div>
@@ -308,11 +302,11 @@
           </form>
 
           <form method="POST" name="signalPendingForm" id="signalPendingForm">
-            <label class="label" for="signals">Избери постъпил сигнал:</label>
+            <label class="label" for="signals">Select an unaccepted signal:</label>
             <div class="control">
               <div class="select">
                 <select name="signals" id="signalsPending">
-                  <option value="" selected="selected">избери сигнал</option>
+                  <option value="" selected="selected">Select a signal</option>
                 </select>
               </div>
               <br>
@@ -326,7 +320,7 @@
 
                 </div><br>
                 <p id="desPendingSignals"></p><br>
-                <label class="label" for="volunteers">Избери отбор за смяна:</label>
+                <label class="label" for="volunteers">Chose another volunteer:</label>
                 <div class="control">
                   <div class="select">
                     <select name="volunteers" id="volunteersPendingSignal">
@@ -336,18 +330,18 @@
                 </div>
                 <br>
 
-                <input type="reset" onclick="getInput(7, 2)" value="Change team" class="button is-success">
+                <input type="reset" onclick="getInput(7, 2)" value="Change volunteer" class="button is-success">
                 <input type="reset" onclick="getInput(8, 2)" value="Delete" class="button is-danger">
                 <p id="signalPendingError"></p>
               </div>
           </form>
           <br>
           <form method="POST" name="signalAcceptedForm" id="signalAcceptedForm">
-            <label class="label" for="signals">Избери приет сигнал:</label>
+            <label class="label" for="signals">Select an accepted signal:</label>
             <div class="control">
               <div class="select">
                 <select name="signals" id="signalsAccepted">
-                  <option value="" selected="selected">Избери сигнал</option>
+                  <option value="" selected="selected">Select a singal</option>
                 </select>
               </div>
               <br>
@@ -363,11 +357,11 @@
           </form>
           <br>
           <form method="POST" name="signalClosedForm" id="signalClosedForm">
-            <label class="label" for="signals">Избери завършен сигнал:</label>
+            <label class="label" for="signals">Select completed signal:</label>
             <div class="control">
               <div class="select">
                 <select name="signals" id="signalsClosed">
-                  <option value="" selected="selected">избери сигнал</option>
+                  <option value="" selected="selected">Select a signal</option>
                 </select>
               </div>
             </div>
@@ -450,7 +444,7 @@
   </div>
 
   <div id="firefighterTeamManagment" class="box"
-    style="width: 72%; margin-left: 14%; margin-right: 14%; margin-top: -20%;">
+    style="width: 72%; margin-left: 14%; margin-right: 14%; margin-top: -3%;">
     <p id="signalP"></p>
     <p id="signalNameP"></p>
     <p id="signalTypeP"></p><br>
@@ -459,8 +453,8 @@
 
     <div id="signalWorkButtons">
       <form onreset="return getInput(12)" method="POST" name="signalSubmitForm">
-        <input type="reset" value="Започване на работа" class="button is-success" id="startWorkingButton">
-        <input type="reset" value="Свършване на работа" class="button is-danger" id="endWorkingButton">
+        <input type="reset" value="Start working" class="button is-success" id="startWorkingButton">
+        <input type="reset" value="End working" class="button is-danger" id="endWorkingButton">
       </form>
     </div>
   </div>
@@ -468,18 +462,17 @@
 
   <article class="message is-danger">
     <div class="message-body">
-      <p class="title is-3">Опасна зона</p><br>
-      <h1 class="subtitle is-5" style="margin-left: 5%;">Бъдете внимателни с действията в тази зона. <b>Действията са
-          необратими!</b></h1><br>
+      <p class="title is-3">Danger zone</p><br>
+      <h1 class="subtitle is-5" style="margin-left: 5%;">Be careful with actions in this area. <b>The actions are irreversible!</b></h1><br>
       <button onclick="getInput(2)" id="deleteAcc" class="button is-danger is-outlined" style="margin-left: 5%;">
-        <span>Изтриване на акаунта</span>
+        <span>Delete account</span>
         <span class="icon is-small">
           <i class="fas fa-times"></i>
         </span>
       </button>
 
       <button onclick="getInput(3)" id="deleteAll" class="button is-danger is-outlined" style="margin-left: 5%;">
-        <span>Изтриване на всички акаунти</span>
+        <span>Delete all accounts</span>
         <span class="icon is-small">
           <i class="fas fa-times"></i>
         </span>
@@ -492,7 +485,7 @@
       <div class="row1">
         <div class="footer1-col">
           <h4>ABOUT SITE</h4>
-          <p>In this site you can find some useful information about ecology and other topics. You can also find some
+          <p style="text-align: justify; max-width: 90%;">In this site you can find some useful information about ecology and other topics. You can also find some
             games and report contaminated
             places to and will try to find volunteers to clean up the place.</p>
         </div>
@@ -501,7 +494,7 @@
           <h4>SOCIAL MEDIAS</h4>
           <div style="margin-left: 7%;">
             <a href="#"><i class="fab fa-2x fa-facebook-f"></i></a>
-            <a href="https://github.com/KNTaligadzhiev19/erasmus-green-project" target="_blank"
+            <a href="https://github.com/SSIvanov19" target="_blank"
               style="margin-left: 7%;"><i class="fab fa-2x fa-github"></i></a>
             <a href="#" style="margin-left: 7%;"><i class="fab fa-2x fa-instagram"></i></a>
             <a href="#" style="margin-left: 7%;"><i class="fab fa-2x fa-linkedin-in"></i></a>
@@ -511,12 +504,11 @@
         <div class="footer1-col">
           <h4>LINKS</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Arduino 101</a></li>
-            <li><a href="#">SmartEcoCity</a></li>
-            <li><a href="#">Влизане</a></li>
-            <li><a href="#">Регистрация</a></li>
-            <li><a href="https://github.com/KNTaligadzhiev19/erasmus-green-project" target="_blank">GitHub</a></li>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="arduino-101.html">Arduino 101</a></li>
+            <li><a href="smart-eco-city.html">SmartEcoCity</a></li>
+            <li><a href="#">Account</a></li>
+            <li><a href="https://github.com/KNTaligadzhiev19" target="_blank">GitHub</a></li>
           </ul>
         </div>
       </div>
@@ -528,7 +520,6 @@
     </div>
   </footer>
 
-  <script src="../node_modules/bulma-calendar/dist/js/bulma-calendar.min.js"></script>
   <script src="../scripts/Logic Layer/accountManager.js"></script>
   <script defer src="../scripts/Presentation Layer/navbar.js"></script>
   <script src="../scripts/Presentation Layer/accountPageScript.js"></script>

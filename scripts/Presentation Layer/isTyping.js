@@ -1,7 +1,7 @@
 const typedTextSpan = document.querySelector(".typed-text");
 const cursorSpan = document.querySelector(".cursor");
 
-const textArray = ["ecology!", "information!", "signals!"];
+const textArray = ["ecology!", "information!", "the future!", "Erasmus +!", "Future Cities!"];
 const typingDelay = 100;
 const erasingDelay = 100;
 const newTextDelay = 1700;

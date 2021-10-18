@@ -21,6 +21,6 @@ function getInput() {
     if (am.login(email, pass)) {
         window.location.href = "../pages/account.html";
     } else {
-        document.getElementById("error").innerHTML = "Не е намерен потребител с такъв имейл или паролата не съвапада!";
+        document.getElementById("error").innerHTML = "No user was found with such an email or the password did not match!";
     }
 }

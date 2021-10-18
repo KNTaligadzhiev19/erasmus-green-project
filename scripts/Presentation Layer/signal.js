@@ -75,32 +75,32 @@ function getInput() {
         case 0:
             form.reset();
             getNames();
-            document.getElementById("error").innerHTML = "Сигналът е изпратен!";
+            document.getElementById("error").innerHTML = "The signal has been sent!";
             break;
         case 1:
             form.reset();
             getNames();
-            document.getElementById("error").innerHTML = "Сигналът трябва да има име!";
+            document.getElementById("error").innerHTML = "The signal must have a name!";
             break;
         case 2:
             form.reset();
             getNames();
-            document.getElementById("error").innerHTML = "Моля, попълнете вашите имена!";
+            document.getElementById("error").innerHTML = "Please fill in your names!";
             break;
         case 3:
             form.reset();
             getNames();
-            document.getElementById("error").innerHTML = "Сигналът трябва да има тип!";
+            document.getElementById("error").innerHTML = "The signal must have a selected problem!";
             break;
         case 4:
             form.reset();
             getNames();
-            document.getElementById("error").innerHTML = "Моля, изберете адрес от картата!";
+            document.getElementById("error").innerHTML = "Please select an address from the map!";
             break;
         case 5:
             form.reset();
             getNames();
-            document.getElementById("error").innerHTML = "Сигналът трябва да има описание!";
+            document.getElementById("error").innerHTML = "The signal must have a description!";
             break;
         default:
             form.reset();
